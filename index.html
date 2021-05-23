@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Number</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">   
+</head>
+<body>
+    <div class="container mt-3">
+        <figure class="text-center">
+            <blockquote class="blockquote">
+              <p>Outlier Sorter</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              排Outlier真的很麻煩
+            </figcaption>
+        </figure>
+        <div class="row">
+            <div class="col-6 righthr">
+                <form>
+                    <div class="input-group">
+                        <span class="input-group-text">Outlier ID</span>
+                        <textarea class="form-control largetextarea" id="outliers" placeholder="每個Outlier請換一行"></textarea>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" value="" id="isRmText">
+                        <label class="form-check-label">
+                          匯入ID後清空輸入框
+                        </label>
+                      </div>
+                    <button type="button" class="btn btn-success mt-3" onclick="importIds()">排序！</button>
+                    <button type="button" class="btn btn-secondary mt-3" onclick="alert('請尼按下重新整理，就可以重製ㄌㄛ')">重置</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">已於資料表刪除</th>
+                        <th scope="col">從本清單刪除</th>
+                    </tr>
+                    </thead>
+                    <tbody id="result">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="input-group">
+                <span class="input-group-text">全部ID（方便貼到簡報）</span>
+                <textarea class="form-control" id="allid"></textarea>
+            </div>
+        </div>
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
