@@ -25,9 +25,15 @@
                         <textarea class="form-control largetextarea" id="outliers" placeholder="每個Outlier請換一行"></textarea>
                     </div>
                     <div class="form-check mt-2">
-                        <input class="form-check-input" type="checkbox" value="" id="isRmText">
+                        <input class="form-check-input" type="checkbox" value="" id="isDisplayTimes" onclick="switchDisplayTimes()" checked>
                         <label class="form-check-label">
-                          匯入ID後清空輸入框
+                          顯示出現次數
+                        </label>
+                      </div>
+                      <div class="form-check mt-1">
+                        <input class="form-check-input" type="checkbox" value="" id="isRmText" checked>
+                        <label class="form-check-label">
+                          匯入ID後清空輸入框（注意：重複匯入ID會導致出現次數重複！）
                         </label>
                       </div>
                     <button type="button" class="btn btn-success mt-3" onclick="importIds()">排序！</button>
@@ -39,7 +45,8 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">已於資料表刪除</th>
+                        <th scope="col" class="times">出現次數</th>
+                        <th scope="col">是否已經從資料中刪除</th>
                         <th scope="col">從本清單刪除</th>
                     </tr>
                     </thead>

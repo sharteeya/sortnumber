@@ -1,6 +1,7 @@
 const idStat = {};
 const outliers = document.getElementById('outliers');
 const isRmText = document.getElementById('isRmText');
+const isDisplayTimes = document.getElementById('isDisplayTimes');
 const result = document.getElementById('result');
 const allid = document.getElementById('allid');
 
@@ -11,6 +12,7 @@ const renderTable = () => {
         `
         <tr>
             <td>${id}</td>
+            <td class="times">${idStat[id].times}</td>
             <td>
                 <div class="form-check form-switch">
                     <input
@@ -18,7 +20,7 @@ const renderTable = () => {
                         type="checkbox"
                         id="flexSwitchCheckDefault"
                         onclick="switchStat(${id})"
-                        ${idStat[id] === true ? 'checked' : ' '}
+                        ${idStat[id].deleteFromData === true ? 'checked' : ' '}
                     >
                 </div>
             </td>
@@ -31,12 +33,19 @@ const renderTable = () => {
     });
     result.innerHTML = newlist;
     allid.value = Object.keys(idStat).join('、');
+    switchDisplayTimes();
 };
 
 const importIds = () => {
     outliers.value.split('\n').forEach((id) => {
-        if (!isNaN(parseInt(id)) && !idStat[parseInt(id)]) {
-            idStat[parseInt(id)] = false;
+        if (isNaN(parseInt(id))) return;
+        if (!idStat[parseInt(id)]) {
+            idStat[parseInt(id)] = {
+                deleteFromData: false,
+                times: 1,
+            };
+        } else {
+            idStat[parseInt(id)].times += 1;
         }
     });
     renderTable();
@@ -44,10 +53,19 @@ const importIds = () => {
 };
 
 const switchStat = (id) => {
-    idStat[parseInt(id)] = !idStat[id];
+    idStat[parseInt(id)].deleteFromData = !idStat[id].deleteFromData;
 };
 
 const removeId = (id) => {
     delete idStat[parseInt(id)];
     renderTable();
+};
+
+const switchDisplayTimes = () => {
+    const tds = document.getElementsByClassName('times');
+    if (isDisplayTimes.checked) {
+        Array.from(tds).forEach((td) => td.style.display = '');
+    } else {
+        Array.from(tds).forEach((td) => td.style.display = 'none');
+    }
 };
