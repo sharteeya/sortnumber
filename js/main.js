@@ -3,7 +3,9 @@ const outliers = document.getElementById('outliers');
 const isRmText = document.getElementById('isRmText');
 const isDisplayTimes = document.getElementById('isDisplayTimes');
 const result = document.getElementById('result');
-const allid = document.getElementById('allid');
+const allId = document.getElementById('allId');
+const deletedId = document.getElementById('deletedId');
+const undeletedId = document.getElementById('undeletedId');
 
 const renderTable = () => {
     let newlist = '';
@@ -32,8 +34,14 @@ const renderTable = () => {
         ;
     });
     result.innerHTML = newlist;
-    allid.value = Object.keys(idStat).join('、');
+    renderSum();
     switchDisplayTimes();
+};
+
+const renderSum = () => {
+    allId.value = Object.keys(idStat).join('、');
+    deletedId.value = Object.keys(idStat).filter((id) => idStat[id].deleteFromData === true).join('、');
+    undeletedId.value = Object.keys(idStat).filter((id) => idStat[id].deleteFromData === false).join('、');
 };
 
 const importIds = () => {
@@ -54,6 +62,7 @@ const importIds = () => {
 
 const switchStat = (id) => {
     idStat[parseInt(id)].deleteFromData = !idStat[id].deleteFromData;
+    renderSum();
 };
 
 const removeId = (id) => {
