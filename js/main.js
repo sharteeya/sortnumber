@@ -86,5 +86,5 @@ const switchDisplayTimes = () => {
 const calFilter = () => {
     const t = filterTimes.value ? filterTimes.value : 0;
     filteredId.value = Object.keys(idStat).filter((id) => idStat[id].times >= t).join('、');
-    filterTitle.innerHTML = `≧ ${t} 次的Outlier`;
+    filterTitle.innerHTML = `≧ ${t} 次的 Outlier`;
 };
