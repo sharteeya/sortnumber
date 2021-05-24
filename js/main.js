@@ -2,10 +2,13 @@ const idStat = {};
 const outliers = document.getElementById('outliers');
 const isRmText = document.getElementById('isRmText');
 const isDisplayTimes = document.getElementById('isDisplayTimes');
+const filterTimes = document.getElementById('filterTimes');
 const result = document.getElementById('result');
 const allId = document.getElementById('allId');
 const deletedId = document.getElementById('deletedId');
 const undeletedId = document.getElementById('undeletedId');
+const filterTitle = document.getElementById('filterTitle');
+const filteredId = document.getElementById('filteredId');
 
 const renderTable = () => {
     let newlist = '';
@@ -35,6 +38,7 @@ const renderTable = () => {
     });
     result.innerHTML = newlist;
     renderSum();
+    calFilter();
     switchDisplayTimes();
 };
 
@@ -77,4 +81,10 @@ const switchDisplayTimes = () => {
     } else {
         Array.from(tds).forEach((td) => td.style.display = 'none');
     }
+};
+
+const calFilter = () => {
+    const t = filterTimes.value ? filterTimes.value : 0;
+    filteredId.value = Object.keys(idStat).filter((id) => idStat[id].times >= t).join('、');
+    filterTitle.innerHTML = `≧ ${t} 次的Outlier`;
 };
