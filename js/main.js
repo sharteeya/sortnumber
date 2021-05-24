@@ -17,7 +17,9 @@ const renderTable = () => {
         `
         <tr>
             <td>${id}</td>
-            <td class="times">${idStat[id].times}</td>
+            <td class="times text-center">
+                ${idStat[id].times}
+            </td>
             <td>
                 <div class="form-check form-switch">
                     <input
