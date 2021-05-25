@@ -103,7 +103,11 @@ const calFilter = () => {
 };
 
 const exportSaves = () => {
-    saveText.value = JSON.stringify(idStat);
+    if (Object.keys(idStat).length === 0) {
+        saveText.value = '目前未匯入任何ID';
+    } else {
+        saveText.value = JSON.stringify(idStat);
+    }
 };
 
 const importSaves = () => {
