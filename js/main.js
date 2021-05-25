@@ -9,6 +9,8 @@ const deletedId = document.getElementById('deletedId');
 const undeletedId = document.getElementById('undeletedId');
 const filterTitle = document.getElementById('filterTitle');
 const filteredId = document.getElementById('filteredId');
+const filterTitleEql = document.getElementById('filterTitleEql');
+const filteredIdEql = document.getElementById('filteredIdEql');
 
 const renderTable = () => {
     let newlist = '';
@@ -89,4 +91,6 @@ const calFilter = () => {
     const t = filterTimes.value ? filterTimes.value : 0;
     filteredId.value = Object.keys(idStat).filter((id) => idStat[id].times >= t).join('、');
     filterTitle.innerHTML = `≧ ${t} 次的 Outlier`;
+    filteredIdEql.value = Object.keys(idStat).filter((id) => idStat[id].times == t).join('、');
+    filterTitleEql.innerHTML = `= ${t} 次的 Outlier`;
 };
