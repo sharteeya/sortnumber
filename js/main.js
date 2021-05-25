@@ -14,6 +14,7 @@ const filteredIdEql = document.getElementById('filteredIdEql');
 const allIdSum = document.getElementById('allIdSum');
 const undeletedIdSum = document.getElementById('undeletedIdSum');
 const deletedIdSum = document.getElementById('deletedIdSum');
+const saveText = document.getElementById('saveText');
 
 const renderTable = () => {
     let newlist = '';
@@ -99,4 +100,21 @@ const calFilter = () => {
     filterTitle.innerHTML = `≧ ${t} 次的 Outlier`;
     filteredIdEql.value = Object.keys(idStat).filter((id) => idStat[id].times == t).join('、');
     filterTitleEql.innerHTML = `= ${t} 次的 Outlier`;
+};
+
+const exportSaves = () => {
+    saveText.value = JSON.stringify(idStat);
+};
+
+const importSaves = () => {
+    try {
+        let saves = JSON.parse(saveText.value);
+        Object.keys(saves).forEach((s) => {
+            idStat[s] = saves[s];
+        });
+        renderTable();
+        saveText.value = '存檔匯入完成';
+    } catch (e) {
+        saveText.value = '存檔解析失敗，請檢察存檔是否完整';
+    }
 };

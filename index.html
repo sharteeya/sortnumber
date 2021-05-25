@@ -127,6 +127,23 @@
             </div>
         </div>
         <hr>
+        <div class="row mt-3">
+            <h3>存檔（Beta）</h3>
+            <h5>警告！使用讀檔會造成記錄覆蓋或混淆，若已經匯入ID，請勿使用讀檔</h4>
+            <p>
+                若要存檔，請先按下匯出，並把這段文字記錄下來<br>
+                讀檔時把文字貼上來按下匯入，即可載入上次使用的狀態<br>
+                請注意本段文字必須手動按下按鈕才會更新成最新狀態<br>
+            </p>
+            <div class="input-group input-group-sm">
+                <textarea class="form-control" id="saveText" rows="2">防誤匯入保護用的字串</textarea>
+            </div>
+            <div class="col-12 col-md-3">
+                <button type="button" class="btn btn-success mt-3" onclick="exportSaves()">產生存檔</button>
+                <button type="button" class="btn btn-secondary mt-3" onclick="importSaves()">匯入存檔</button>
+            </div>
+        </div>
+        <hr>
         <div class="row mb-3">
             <small class="text-center">
                 以上所有文字框都可以自由在裡面編輯與加字，但注意使用網頁功能時會重設內容<br>
