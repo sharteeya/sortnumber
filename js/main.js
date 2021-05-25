@@ -11,6 +11,9 @@ const filterTitle = document.getElementById('filterTitle');
 const filteredId = document.getElementById('filteredId');
 const filterTitleEql = document.getElementById('filterTitleEql');
 const filteredIdEql = document.getElementById('filteredIdEql');
+const allIdSum = document.getElementById('allIdSum');
+const undeletedIdSum = document.getElementById('undeletedIdSum');
+const deletedIdSum = document.getElementById('deletedIdSum');
 
 const renderTable = () => {
     let newlist = '';
@@ -50,6 +53,9 @@ const renderSum = () => {
     allId.value = Object.keys(idStat).join('、');
     deletedId.value = Object.keys(idStat).filter((id) => idStat[id].deleteFromData === true).join('、');
     undeletedId.value = Object.keys(idStat).filter((id) => idStat[id].deleteFromData === false).join('、');
+    allIdSum.value = `一共 ${Object.keys(idStat).length} 個`;
+    deletedIdSum.value = `一共 ${Object.keys(idStat).filter((id) => idStat[id].deleteFromData === true).length} 個`;
+    undeletedIdSum.value = `一共 ${Object.keys(idStat).filter((id) => idStat[id].deleteFromData === false).length} 個`;
 };
 
 const importIds = () => {
