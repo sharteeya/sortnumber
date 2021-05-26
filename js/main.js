@@ -84,16 +84,13 @@ const importIds = () => {
 
 const switchStat = (id) => {
     const row = document.getElementById(`outlier-row-${id}`);
-    console.log(row)
     idStat[parseInt(id, 10)].deleteFromData = !idStat[id].deleteFromData;
     if (idStat[parseInt(id, 10)].deleteFromData === true) {
         row.classList.add('table-secondary');
         row.classList.add('deletedRow');
-        console.log('add')
     } else {
         row.classList.remove('table-secondary');
         row.classList.remove('deletedRow');
-        console.log('rm')
     }
     renderSum();
 };
