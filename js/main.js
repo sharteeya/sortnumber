@@ -16,6 +16,11 @@ const undeletedIdSum = document.getElementById('undeletedIdSum');
 const deletedIdSum = document.getElementById('deletedIdSum');
 const saveText = document.getElementById('saveText');
 
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+});
+
 const renderTable = () => {
     let newlist = '';
     Object.keys(idStat).forEach((id) => {
