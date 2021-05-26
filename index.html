@@ -28,34 +28,53 @@
                         <span class="input-group-text">Outlier ID</span>
                         <textarea class="form-control"  rows="15" id="outliers" placeholder="請輸入Outlier的ID，每個ID請換一行"></textarea>
                     </div>
-                    <div class="form-check mt-2">
-                        <input class="form-check-input" type="checkbox" value="" id="isDisplayTimes" onclick="switchDisplayTimes()" checked>
-                        <label class="form-check-label">
-                          在統計表中顯示出現次數
-                        </label>
-                      </div>
-                      <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="isRmText" checked>
-                        <label class="form-check-label">
-                          匯入ID後清空輸入框（注意：重複匯入會導致出現次數重複！）
-                        </label>
-                      </div>
-                    <button type="button" class="btn btn-success mt-3" onclick="importIds()">排序！</button>
-                    <button type="button" class="btn btn-secondary mt-3" onclick="alert('請尼按下重新整理，就可以重置了ㄛ，感謝尼')">重置</button>
+                    <div class="mt-3">
+                        <div class="form-check form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="isDisplayTimes"
+                                onclick="switchDisplayTimes()"
+                                checked
+                            >
+                            <label class="form-check-label">
+                                在統計表中顯示出現次數
+                            </label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="isRmText" checked>
+                            <label class="form-check-label">
+                                匯入ID後清空輸入框（注意：重複匯入會導致出現次數重複！）
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check mt-1 p-0">
+                        <button type="button" class="btn btn-success mt-3" onclick="importIds()">排序！</button>
+                        <button type="button" class="btn btn-secondary mt-3" onclick="alert('請尼按下重新整理，就可以重置了ㄛ，感謝尼')">重置</button>
+                    </div>
                 </form>
             </div>
             <div class="col-12 col-md-6">
-                <table class="table">
+                <table class="table table-hover text-center">
+                    <!-- <caption class="text-center">Outlier列表</caption> -->
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col" class="times">出現次數</th>
-                        <th scope="col">是否已經從資料中刪除</th>
-                        <th scope="col">從本清單刪除</th>
+                        <th scope="col text-left">是否已刪除</th>
+                        <th scope="col">從本表刪除</th>
                     </tr>
                     </thead>
                     <tbody id="result">
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>ID</td>
+                            <td class="times">出現次數</td>
+                            <td>是否已刪除</td>
+                            <td>從本表刪除</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

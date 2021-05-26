@@ -22,7 +22,7 @@ const renderTable = () => {
         newlist += 
         `
         <tr>
-            <td>${id}</td>
+            <th scope="row">${id}</th>
             <td class="times text-center">
                 ${idStat[id].times}
             </td>
@@ -31,7 +31,6 @@ const renderTable = () => {
                     <input
                         class="form-check-input"
                         type="checkbox"
-                        id="flexSwitchCheckDefault"
                         onclick="switchStat(${id})"
                         ${idStat[id].deleteFromData === true ? 'checked' : ' '}
                     >
