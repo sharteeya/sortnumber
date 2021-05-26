@@ -21,12 +21,18 @@
               排Outlier真的很麻煩
             </figcaption>
         </figure>
+        <hr>
         <div class="row">
             <div class="col-12 col-md-6 righthr">
+                <h3>Outlier排序工具</h3>
+                <p>
+                    協助排Outlier的簡單工具，建議使用電腦版<br>
+                    （等等，你怎麼會想用手機跑SPSS啦）
+                </p>
                 <form>
                     <div class="input-group">
                         <span class="input-group-text">Outlier ID</span>
-                        <textarea class="form-control"  rows="15" id="outliers" placeholder="請輸入Outlier的ID，每個ID請換一行"></textarea>
+                        <textarea class="form-control"  rows="12" id="outliers" placeholder="請輸入Outlier的ID，每個ID請換一行"></textarea>
                     </div>
                     <div class="mt-3">
                         <div class="form-check form-switch">
@@ -62,7 +68,7 @@
                         <th scope="col">ID</th>
                         <th scope="col" class="times">出現次數</th>
                         <th scope="col text-left">是否已刪除</th>
-                        <th scope="col">從本表刪除</th>
+                        <th scope="col">本表操作</th>
                     </tr>
                     </thead>
                     <tbody id="result">
@@ -72,7 +78,7 @@
                             <td>ID</td>
                             <td class="times">出現次數</td>
                             <td>是否已刪除</td>
-                            <td>從本表刪除</td>
+                            <td>本表操作</td>
                         </tr>
                     </tfoot>
                 </table>

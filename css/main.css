@@ -1,3 +1,7 @@
 .righthr {
     border-right: 1px black solid;
 }
+
+.deletedRow {
+    color: #c4c4c4;
+}

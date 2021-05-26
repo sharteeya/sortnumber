@@ -21,7 +21,7 @@ const renderTable = () => {
     Object.keys(idStat).forEach((id) => {
         newlist += 
         `
-        <tr>
+        <tr id="outlier-row-${id}" ${idStat[id].deleteFromData === true ? 'class="table-secondary deletedRow"' : ''}>
             <th scope="row">${id}</th>
             <td class="times text-center">
                 ${idStat[id].times}
@@ -37,8 +37,11 @@ const renderTable = () => {
                 </div>
             </td>
             <td>
+                <button type="button" class="btn btn-sm btn-outline-secondary d-none d-md-inline" onclick="addOne(${id})">+1</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary d-none d-md-inline" onclick="minusOne(${id})">-1</button>
+                　
                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeId(${id})">刪除</button>
-            </td>
+                </td>
         </tr>
         `
         ;
@@ -60,14 +63,14 @@ const renderSum = () => {
 
 const importIds = () => {
     outliers.value.split('\n').forEach((id) => {
-        if (isNaN(parseInt(id))) return;
-        if (!idStat[parseInt(id)]) {
-            idStat[parseInt(id)] = {
+        if (isNaN(parseInt(id, 10))) return;
+        if (!idStat[parseInt(id, 10)]) {
+            idStat[parseInt(id, 10)] = {
                 deleteFromData: false,
                 times: 1,
             };
         } else {
-            idStat[parseInt(id)].times += 1;
+            idStat[parseInt(id, 10)].times += 1;
         }
     });
     renderTable();
@@ -75,12 +78,23 @@ const importIds = () => {
 };
 
 const switchStat = (id) => {
-    idStat[parseInt(id)].deleteFromData = !idStat[id].deleteFromData;
+    const row = document.getElementById(`outlier-row-${id}`);
+    console.log(row)
+    idStat[parseInt(id, 10)].deleteFromData = !idStat[id].deleteFromData;
+    if (idStat[parseInt(id, 10)].deleteFromData === true) {
+        row.classList.add('table-secondary');
+        row.classList.add('deletedRow');
+        console.log('add')
+    } else {
+        row.classList.remove('table-secondary');
+        row.classList.remove('deletedRow');
+        console.log('rm')
+    }
     renderSum();
 };
 
 const removeId = (id) => {
-    delete idStat[parseInt(id)];
+    delete idStat[parseInt(id, 10)];
     renderTable();
 };
 
@@ -120,4 +134,15 @@ const importSaves = () => {
     } catch (e) {
         saveText.value = '存檔解析失敗，請檢察存檔是否完整';
     }
+};
+
+const addOne = (id) => {
+    idStat[parseInt(id, 10)].times += 1;
+    renderTable();
+};
+
+const minusOne = (id) => {
+    idStat[parseInt(id, 10)].times -= 1;
+    if (idStat[parseInt(id, 10)].times <= 0) removeId(id);
+    else renderTable();
 };
