@@ -34,7 +34,7 @@ const renderTable = () => {
             <td>
                 <div class="form-check form-switch">
                     <input
-                        class="form-check-input"
+                        class="form-check-input mx-auto"
                         type="checkbox"
                         onclick="switchStat(${id})"
                         ${idStat[id].deleteFromData === true ? 'checked' : ' '}
