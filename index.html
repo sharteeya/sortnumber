@@ -28,8 +28,12 @@
                 <p>
                     協助排Outlier的簡單工具<br>
                 </p>
+                <div class="alert alert-warning alert-dismissible fade show" id="saveHint" role="alert" style="display: none;">
+                    偵測到存檔，若需匯入，請點選底部的讀取存檔按鈕
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                 <div class="d-sm-none mb-2">
-                    <strong>目前的視窗過小，會比較難操作，建議放大視窗或使用電腦來進行</strong>
+                    <strong>目前的視窗過小，操作較為不易，建議放大視窗或使用電腦來進行</strong>
                 </div>
                 <form>
                     <div class="input-group">
@@ -154,19 +158,33 @@
         </div>
         <hr>
         <div class="row mt-3">
-            <h3>存檔（Beta）</h3>
-            <strong>警告！使用讀檔會造成記錄覆蓋或混淆，若已經匯入ID，請勿使用讀檔</strong>
-            <p>
-                若要存檔，請先按下匯出，並把這段文字記錄下來<br>
-                讀檔時把文字貼上來按下匯入，即可載入上次使用的狀態<br>
-                請注意本段文字必須手動按下按鈕才會更新成最新狀態<br>
-            </p>
+            <h3>存檔</h3>
+            <strong>
+                注意，讀取存檔將覆蓋目前的使用狀態 <br>
+                請留意存檔儲存位置為瀏覽器，清除瀏覽紀錄時會一併刪除存擋。
+            </strong>
             <div class="input-group input-group-sm">
-                <textarea class="form-control" id="saveText" rows="2">防誤匯入保護用的字串</textarea>
+                <textarea class="form-control" id="saveText" rows="1" readonly></textarea>
             </div>
-            <div class="col-12 col-md-3">
-                <button type="button" class="btn btn-success mt-3" onclick="exportSaves()">產生存檔</button>
-                <button type="button" class="btn btn-secondary mt-3" onclick="importSaves()">匯入存檔</button>
+            <div class="col-12">
+                <button type="button" class="btn btn-success mt-3" onclick="saveToBrowser()">存檔</button>
+                <button type="button" class="btn btn-success mt-3" onclick="readFromBrowser()">讀取存檔</button>
+                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" data-bs-target="#check-opt" aria-expanded="false" aria-controls="check-opt">
+                    刪除存檔
+                </button>
+            </div>
+            <div class="collapse mt-2 mb-2" id="check-opt">
+                <div class="card card-body">
+                    <p>存檔將被永久移除，確定要移除嗎？</p>
+                    <div class="row">
+                        <div class="d-grid col col-6">
+                            <button class="btn btn-outline-danger" onclick="removeSave()" type="button" data-bs-toggle="collapse" data-bs-target="#check-opt" aria-expanded="false" aria-controls="check-opt">確定</button>
+                        </div>
+                        <div class="d-grid col col-6">
+                            <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#check-opt" aria-expanded="false" aria-controls="check-opt">取消</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
