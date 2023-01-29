@@ -15,6 +15,7 @@ const allIdSum = document.getElementById('allIdSum');
 const undeletedIdSum = document.getElementById('undeletedIdSum');
 const deletedIdSum = document.getElementById('deletedIdSum');
 const saveText = document.getElementById('saveText');
+const saveHint = document.getElementById('saveHint');
 
 const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => {
@@ -117,25 +118,31 @@ const calFilter = () => {
     filterTitleEql.innerHTML = `= ${t} 次的 Outlier`;
 };
 
-const exportSaves = () => {
+const saveToBrowser = () => {
     if (Object.keys(idStat).length === 0) {
-        saveText.value = '目前未匯入任何ID';
+        saveText.value = '目前未有紀錄可存檔';
     } else {
-        saveText.value = JSON.stringify(idStat);
+        localStorage.setItem('idStat', JSON.stringify(idStat));
+        saveText.value = '存檔完成';
     }
 };
 
-const importSaves = () => {
+const readFromBrowser = () => {
     try {
-        let saves = JSON.parse(saveText.value);
+        const saves = JSON.parse(localStorage.getItem('idStat'));
         Object.keys(saves).forEach((s) => {
             idStat[s] = saves[s];
         });
         renderTable();
         saveText.value = '存檔匯入完成';
     } catch (e) {
-        saveText.value = '存檔解析失敗，請檢察存檔是否完整';
+        saveText.value = '無存檔或存檔異常，無法讀取';
     }
+};
+
+const removeSave = () => {
+    localStorage.removeItem('idStat');
+    saveText.value = '已刪除存檔';
 };
 
 const addOne = (id) => {
@@ -148,3 +155,7 @@ const minusOne = (id) => {
     if (idStat[parseInt(id, 10)].times <= 0) removeId(id);
     else renderTable();
 };
+
+if (localStorage.getItem('idStat')) {
+    saveHint.style.display = '';
+}
