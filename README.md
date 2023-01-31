@@ -1,9 +1,35 @@
 # Outlier Sorter (sortnumber)
 
-A tiny tool to help you sort outliers. 
+簡單排序 Outlier 的網頁工具
 
-[CLICK HERE](https://sharteeya.github.io/sortnumber/) to use this tool
+## 如何使用
+[點擊此連結](https://sharteeya.github.io/sortnumber/)
 
-Feel free to push some commit if you make new functions or improve the tool.
+## 使用方法
+建議使用電腦，雙螢幕有更好的使用效果
 
-Have a good time on RM2 homework. ;\)
+### 輸入 Outlier
+1. 準備好要刪除的 Outlier ID 後，在左側文字框輸入 Outlier 的 ID，一行一個，非數字或負數會被忽略，小數則會無條件捨去至整數
+2. 完成後按下排序按鈕，網頁會自動統整出現次數至右方統計框
+
+※關於選出 Outlier 的方法，請參考上課簡報
+
+## 操作 Outlier
+1. 在右方可自由勾選「是否已刪除」，代表把這個 Outlier 從資料表中剃除
+2. 「本表操作」可以簡易的加減 1 次出現次數，或是從表中刪除該 Outlier ID
+
+※加減 1 次在視窗過小時不會顯示
+
+## 下方統計資料
+方便做簡報時使用，不需要多加說明了吧
+
+## 存檔
+可將目前的使用紀錄存檔至瀏覽器中
+
+### 注意事項
+1. 清除暫存會一併移除紀錄，若是使用無痕模式，關閉視窗後存檔也會自動刪除
+2. 存檔無法跨瀏覽器
+3. 讀檔會覆蓋掉目前的使用紀錄，請小心使用
+
+## 其他
+祝大家研方二作業愉快 :\)
